@@ -1,0 +1,27 @@
+import React from "react";
+
+const LoginPage = ({ setIsLogged, setLoggedUser, loggedUser }: any) => {
+  return (
+    <div className="flex flex-col justify-between gap-2 w-[400px] h-max bg-[#7FB3D5] rounded-md p-3">
+      <h1 className="font-bold text-lg">Your Username</h1>
+      <input
+        className="h-[40px] rounded-md text-black px-2"
+        onChange={(e) => {
+          setLoggedUser({ ...loggedUser, userName: e.target.value });
+        }}
+      />
+      <div className="flex justify-end">
+        <button
+          className="px-3 py-1 bg-[black] w-[100%] rounded-md"
+          onClick={() => {
+            setIsLogged((prev: boolean) => !prev);
+          }}
+        >
+          Join
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default LoginPage;
