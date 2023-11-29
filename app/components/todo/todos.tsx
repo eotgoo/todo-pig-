@@ -44,7 +44,7 @@ const Todos = ({ todos, setTodos }: any) => {
                 style={{ color: "green" }}
               />
             </button>
-            {/* <button className="flex-1">
+            {/* <button className="f  lex-1">
               <FontAwesomeIcon icon={faPencil} style={{ color: "black" }} />
             </button> */}
             <button
