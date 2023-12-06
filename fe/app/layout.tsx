@@ -1,6 +1,8 @@
+import "./globals.css";
 import type { Metadata } from "next";
 import { Inter, Josefin_Sans, Nova_Square } from "next/font/google";
-import "./globals.css";
+import UserProvider from "@/context/userContext";
+import TodoProvider from "@/context/todoContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const Josefin = Josefin_Sans({ subsets: ["latin"] });
@@ -17,7 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={Josefin.className}>{children}</body>
+      <UserProvider>
+        <TodoProvider>
+          <body className={Josefin.className}>{children}</body>
+        </TodoProvider>
+      </UserProvider>
     </html>
   );
 }
