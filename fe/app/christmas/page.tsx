@@ -45,9 +45,10 @@ const Christmas = () => {
       alphabet_array.map((aLetter) => {
         returningWordArr.push(aLetter);
         if (wLetter.toLowerCase() === aLetter.toLowerCase()) {
-          returningWordArr.push(aLetter);
+          returningWordArr.push(wLetter);
+          console.log(wLetter);
         }
-        delay += 50;
+        delay += 20;
 
         const returningWord = returningWordArr.join("");
         setTimeout(() => {
@@ -57,7 +58,9 @@ const Christmas = () => {
       });
     });
   };
-
+  useEffect(() => {
+    console.log(word);
+  }, [word]);
   return (
     <div className="flex flex-col items-center gap-2 justify-center  h-screen">
       {isFunctionWorking === true ? (
@@ -75,7 +78,7 @@ const Christmas = () => {
       )}
       <button
         onClick={() => {
-          findAlphabet({ word: clientWord });
+          isFunctionWorking === false ? findAlphabet({ word: clientWord }) : {};
           setIsFunctionWorking((prev: any) => !prev);
         }}
       >
