@@ -59,7 +59,7 @@ const Christmas = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center  h-screen">
+    <div className="flex flex-col items-center gap-2 justify-center  h-screen">
       {isFunctionWorking === true ? (
         <h1 className="text-5xl">{word}</h1>
       ) : (
