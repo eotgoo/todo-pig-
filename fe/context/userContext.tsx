@@ -14,14 +14,16 @@ const UserProvider = ({ children }: any) => {
   useEffect(() => {
     console.log("BASE_URL", BASE_URL);
 
-    if (localStorage.getItem("isLogged") === "true") {
-      setIsLogged(true);
-      const userDataString = localStorage.getItem("userData");
-      const userData = userDataString ? JSON.parse(userDataString) : null;
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("isLogged") === "true") {
+        setIsLogged(true);
+        const userDataString = localStorage.getItem("userData");
+        const userData = userDataString ? JSON.parse(userDataString) : null;
 
-      setUserData({ userName: userData.name });
-    } else {
-      setIsLogged(false);
+        setUserData({ userName: userData.name });
+      } else {
+        setIsLogged(false);
+      }
     }
   }, []);
 

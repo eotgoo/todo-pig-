@@ -7,8 +7,13 @@ const getTodosByUser = async (
   next: NextFunction
 ) => {
   try {
+    // query ees name field avna
     const { name } = req.query;
+
+    // zuvhun nereer user haij olno
     const todos = await Todo.find({ name: name });
+
+    // Amjilttai bolvol success true butsaana
     res.status(200).json({
       success: true,
       todos,
@@ -21,15 +26,15 @@ const getTodosByUser = async (
 const createTodo = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { task, name } = req.body;
-    const date = new Date();
 
+    // name esvel task orj ireegui baival aldaa butsaana
     if (!name || !task) {
       res.status(400).json({
         success: false,
         message: "name or text field required",
       });
     } else {
-      const todo = await Todo.create({ name, task, createdDate: date });
+      const todo = await Todo.create({ name, task });
 
       res.status(201).json({
         success: true,

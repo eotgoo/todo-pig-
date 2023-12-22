@@ -4,6 +4,7 @@ import Todo from "../components/todo/todo";
 import LoginPage from "../components/login/loginPage";
 
 import { UserContext } from "@/context/userContext";
+import Profile from "../components/profile";
 
 const Home = () => {
   const { isLogged, setIsLogged, userData, setUserData, logIn }: any =
@@ -11,7 +12,10 @@ const Home = () => {
   return (
     <div className="h-screen w-full flex flex-col items-center justify-center gap-4 bg-[#F5F5F5]">
       {isLogged ? (
-        <Todo userData={userData} setUserData={setUserData} />
+        <>
+          <Todo userData={userData} setUserData={setUserData} />
+          <Profile userData={userData} />
+        </>
       ) : (
         <LoginPage
           logIn={logIn}

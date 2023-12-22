@@ -15,7 +15,6 @@ const Todo = ({ userData }: any) => {
   return (
     <>
       <h1 className="text-5xl font-bold text-[#2F4F4F] ">To-do list</h1>
-      <p className="text-[#2F4F4F]">{userData.userName}</p>
       <p className="text-[#2F4F4F]">Simple App to manage your daily to-do</p>
       <div className=" flex flex-col gap-4 items-center bg-[#7FB3D5] w-[400px] h-[75%] rounded-lg p-4 border-[#A9A9A9] border-2">
         <AddTodo createTodo={createTodo} userData={userData} />

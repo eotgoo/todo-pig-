@@ -6,6 +6,7 @@ import {
   faX,
   faCheck,
   faPen,
+  faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Todos = ({ todos, setTodos, deleteTodo, editTodo }: any) => {
@@ -62,7 +63,7 @@ const Todos = ({ todos, setTodos, deleteTodo, editTodo }: any) => {
                 deleteTodo({ id: todo._id });
               }}
             >
-              <FontAwesomeIcon icon={faTrash} style={{ color: "red" }} />
+              <FontAwesomeIcon icon={faTrashAlt} style={{ color: "red" }} />
             </button>
           </div>
         </div>

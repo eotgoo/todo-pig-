@@ -5,7 +5,7 @@ const Christmas = () => {
   const [word, setWord] = useState("");
   const [clientWord, setClientWord] = useState("");
   const [isFunctionWorking, setIsFunctionWorking] = useState(false);
-
+  const timeOutIds: any[] = [];
   const alphabet_array = [
     "A",
     "B",
@@ -33,27 +33,156 @@ const Christmas = () => {
     "X",
     "Y",
     "Z",
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
     " ",
+    "!",
+    '"',
+    "#",
+    "$",
+    "%",
+    "&",
+    "'",
+    "(",
+    ")",
+    "*",
+    "+",
+    ",",
+    "-",
+    ".",
+    "/",
+    ":",
+    ";",
+    "<",
+    "=",
+    ">",
+    "?",
+    "@",
+    "[",
+    "\\",
+    "]",
+    "^",
+    "_",
+    "`",
+    "{",
+    "|",
+    "}",
+    "~",
+    "А",
+    "Б",
+    "В",
+    "Г",
+    "Д",
+    "Е",
+    "Ё",
+    "Ж",
+    "З",
+    "И",
+    "Й",
+    "К",
+    "Л",
+    "М",
+    "Н",
+    "О",
+    "Ө",
+    "П",
+    "Р",
+    "С",
+    "Т",
+    "У",
+    "Ү",
+    "Ф",
+    "Х",
+    "Ц",
+    "Ч",
+    "Ш",
+    "Щ",
+    "Ъ",
+    "Ы",
+    "Ь",
+    "Э",
+    "Ю",
+    "Я",
+    "а",
+    "б",
+    "в",
+    "г",
+    "д",
+    "е",
+    "ё",
+    "ж",
+    "з",
+    "и",
+    "й",
+    "к",
+    "л",
+    "м",
+    "н",
+    "о",
+    "ө",
+    "п",
+    "р",
+    "с",
+    "т",
+    "у",
+    "ү",
+    "ф",
+    "х",
+    "ц",
+    "ч",
+    "ш",
+    "щ",
+    "ъ",
+    "ы",
+    "ь",
+    "э",
+    "ю",
+    "я",
   ];
 
   const findAlphabet = ({ word }: any) => {
     const wordArr = word.split("");
     const returningWordArr = [""];
-    let delay = 100;
+    let delay = 0;
 
     wordArr.map((wLetter: any) => {
       alphabet_array.map((aLetter) => {
         returningWordArr.push(aLetter);
-        if (wLetter.toLowerCase() === aLetter.toLowerCase()) {
+        if (wLetter === aLetter) {
           returningWordArr.push(wLetter);
           console.log(wLetter);
         }
-        delay += 20;
+        delay += 10;
 
         const returningWord = returningWordArr.join("");
-        setTimeout(() => {
+        let timeOutId = setTimeout(() => {
           setWord(returningWord);
         }, delay);
+        timeOutIds.push(timeOutId);
         returningWordArr.pop();
       });
     });
@@ -78,7 +207,13 @@ const Christmas = () => {
       )}
       <button
         onClick={() => {
-          isFunctionWorking === false ? findAlphabet({ word: clientWord }) : {};
+          if (isFunctionWorking === false) {
+            findAlphabet({ word: clientWord });
+          } else {
+            for (const timeoutId of timeOutIds) {
+              clearTimeout(timeoutId);
+            }
+          }
           setIsFunctionWorking((prev: any) => !prev);
         }}
       >

@@ -2,12 +2,12 @@ import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import connectDB from "./config/db";
 import dotenv from "dotenv";
-import * as cron from "node-cron";
 
 dotenv.config();
 import error from "./middlewares/error";
 import userRoutes from "./routes/user";
 import todoRoutes from "./routes/todo";
+import generateImageRoutes from "./routes/openAi";
 
 const app = express();
 
@@ -22,6 +22,7 @@ app.use(express.json()); // Add this line to parse JSON request bodies
 // Routes
 app.use("/users", userRoutes);
 app.use("/todo", todoRoutes);
+app.use("/generateImage", generateImageRoutes);
 
 // 8000 response
 app.get("/", (req: Request, res: Response) => {

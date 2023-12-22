@@ -28,7 +28,6 @@ const getUser = async (req: Request, res: Response, next: NextFunction) => {
 const createUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { name } = req.body;
-    const date = new Date();
 
     if (!name) {
       res.status(400).json({
@@ -36,7 +35,7 @@ const createUser = async (req: Request, res: Response, next: NextFunction) => {
         message: "name field required",
       });
     } else {
-      const user = await User.create({ name, registeredDate: date });
+      const user = await User.create({ name });
       console.log("hellllooooo", user);
       res.status(201).json({
         success: true,

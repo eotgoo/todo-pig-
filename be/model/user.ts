@@ -9,7 +9,7 @@ const userSchema = new Schema({
   },
   registeredDate: {
     type: Date,
-    required: [true, "Date is required"],
+    default: new Date(),
   },
 });
 
