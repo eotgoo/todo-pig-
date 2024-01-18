@@ -12,8 +12,6 @@ const UserProvider = ({ children }: any) => {
   const [userData, setUserData] = useState({ userName: "" });
 
   useEffect(() => {
-    console.log("BASE_URL", BASE_URL);
-
     if (typeof window !== "undefined") {
       if (localStorage.getItem("isLogged") === "true") {
         setIsLogged(true);

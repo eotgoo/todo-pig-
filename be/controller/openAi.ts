@@ -10,7 +10,7 @@ const generateImage = async (
   console.log(prompt);
   try {
     const openai = new OpenAI({
-      apiKey: "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",
+      apiKey: process.env.OPENAI_API_KE || "",
     });
 
     const response = await openai.images.generate({
